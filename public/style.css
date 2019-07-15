@@ -104,10 +104,6 @@ ul {
     border: 4px solid #96c21d;
     color: white;
   }
-  .badAnswer:hover{
-    background-color: rgb(211, 28, 28);
-
-  }
   .badAnswer{
     background-color: rgb(211, 28, 28);
     color: white;

@@ -35,18 +35,20 @@ class Quiz {
     }
 }
 
-//example data
-let quiz = new Quiz("Programming quiz", "Do you know programming languages?");
+//this is an example; in the finished project, the data will be downloaded from the database
+let quiz = new Quiz("Programming quiz", "How well do you know programming languages?");
 
 function init() {
-    quiz.addQuestion(new Question("Which one is an object-oriented language?", ['A. Prolog', 'B. F#', 'C. C#'], 2));
-    quiz.addQuestion(new Question("Kotlin is designed to interoperate fully with Java", ['A. True', 'B. False'], 0));
-    quiz.addQuestion(new Question("Third question", ['A. X', 'B. X', 'C. X', 'D. X'], 0));
+    quiz.addQuestion(new Question("Which of the following is the logic programming language?", ['A. Prolog', 'B. F#', 'C. C#'], 0));
+    quiz.addQuestion(new Question("Which JavaScript command outputs a message to the web console?", ['A. console.send', 'B. cout', 'C. echo', 'D. console.log'], 3));
+    quiz.addQuestion(new Question("How to create a variable x in PHP?", ['A. let x', 'B. $x', 'C. int x', 'D. &x'], 1));
+    quiz.addQuestion(new Question("Is HTML a programming language?", ['A. Yes', 'B. No'], 1));
+    quiz.addQuestion(new Question("C# was designed by:", ['A. Oracle', 'B. Apple', 'C. Microsoft'], 2));
     quiz.displayQuestions();
 }
 
 
-//on click an answer
+//onClick an answer
 function tryAnswer(numberOfQuest, numberOfAnswer) {
     if(numberOfAnswer == quiz.questions[numberOfQuest].correctAnswer)
     {
