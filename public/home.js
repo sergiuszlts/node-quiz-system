@@ -6,7 +6,7 @@ function initial() {
         .then(function (res) {
             display(res);
         }).catch(function (error) {
-            document.getElementById("content").innerHTML = "<h4>An error occured :(";
+            document.getElementById("content").innerHTML = "<h4>An error occured :(</h4>";
         });
 }
 
