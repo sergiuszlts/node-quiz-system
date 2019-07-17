@@ -1,0 +1,22 @@
+{
+  "name": "quiz-system",
+  "version": "1.0.0",
+  "description": "Simple quiz system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiuszlts/node-quiz-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergiuszlts/node-quiz-system/issues"
+  },
+  "homepage": "https://github.com/sergiuszlts/node-quiz-system#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
