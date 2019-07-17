@@ -94,6 +94,10 @@ ul {
     color: white;
   }
 
+  .button h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
   .disabled{
     opacity: 0.6;
     cursor: default;
@@ -136,6 +140,9 @@ ul {
     }
     button{
       width: 46%;
+    }
+    .buttonfull{
+      width: 90%;
     }
     .result{
       width: 90%;
