@@ -1,52 +1,22 @@
-class Question {
-    constructor(text, answers, correctAnswer) {
-        this.text = text;
-        this.answers = answers;
-        this.correctAnswer = correctAnswer;
-    }
+let quiz;
+
+function init()
+{
+    let toFetch = "../json/";
+    let str = window.location.href;
+    let pieces = str.split(/[\s/]+/);
+    let id = pieces[pieces.length-1];
+    if(!isNaN(parseInt(id))) toFetch += id;
+    else toFetch += 1; //default quiz
+    fetch(toFetch)
+    .then(function(response) {
+        return response.json();
+      })
+      .then(function(res) {
+        quiz = res;
+        displayQuestions();
+    })
 }
-
-class Quiz {
-    questions = [];
-    constructor(title, description = null) {
-        this.correctAnswers = 0;
-        this.howManyAnswered = 0;
-        this.title = title;
-        this.description = description;
-    }
-    addQuestion(question) {
-        this.questions.push(question);
-    }
-    displayQuestions() {
-        let cont = document.getElementById("content");
-        cont.innerHTML += `<h2>${this.title}</h2>`;
-        if (this.description != null) cont.innerHTML += `<a>${this.description}</a>`;
-        this.questions.forEach(function (quest, numberOfQuest) {
-            let res = "";
-            res += `
-            <div class="question" id="quest${numberOfQuest}"><h3>${quest.text}</h3><div class="answers">`;
-            quest.answers.forEach(function (answ, i) {
-                res += `<button class="button" onclick="tryAnswer(${numberOfQuest}, ${i})">${answ}</button>`;
-            }
-            );
-            res += `</div></div>`;
-            cont.innerHTML += res;
-        });
-    }
-}
-
-//this is an example; in the finished project, the data will be downloaded from the database
-let quiz = new Quiz("Programming quiz", "How well do you know programming languages?");
-
-function init() {
-    quiz.addQuestion(new Question("Which of the following is the logic programming language?", ['A. Prolog', 'B. F#', 'C. C#'], 0));
-    quiz.addQuestion(new Question("Which JavaScript command outputs a message to the web console?", ['A. console.send', 'B. cout', 'C. echo', 'D. console.log'], 3));
-    quiz.addQuestion(new Question("How to create a variable x in PHP?", ['A. let x', 'B. $x', 'C. int x', 'D. &x'], 1));
-    quiz.addQuestion(new Question("Is HTML a programming language?", ['A. Yes', 'B. No'], 1));
-    quiz.addQuestion(new Question("C# was designed by:", ['A. Oracle', 'B. Apple', 'C. Microsoft'], 2));
-    quiz.displayQuestions();
-}
-
 
 //onClick an answer
 function tryAnswer(numberOfQuest, numberOfAnswer) {
@@ -79,4 +49,22 @@ function endOfQuiz()
     let percent = Math.round(quiz.correctAnswers/quiz.questions.length*100);
     document.getElementById("content").innerHTML+= `<div class="result">Your Score: ${quiz.correctAnswers}/${quiz.questions.length}<br>${percent}%</div>`;
     window.scrollTo(0,document.body.scrollHeight);
+}
+
+function displayQuestions() {
+    let cont = document.getElementById("content");
+        cont.innerHTML += `<h2>${quiz.title}</h2>`;
+        if(quiz.description != null) cont.innerHTML += `<a>${quiz.description}</a>`;
+        quiz.questions.forEach(function(quest, numberOfQuest) {
+            let res = "";
+            res += `
+            <div class="question" id="quest${numberOfQuest}"><h3>${quest.text}</h3><div class="answers">`;
+            quest.answers.forEach(function (answ, i) {
+                res += `<button class="button" onclick="tryAnswer(${numberOfQuest}, ${i})">${answ}</button>`;
+            }
+
+            );
+            res += `</div></div>`;
+            cont.innerHTML += res;
+        });
 }
