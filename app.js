@@ -24,7 +24,8 @@ app.get('/json/:idQ', (req, res) => {
         var query = { "id": parseInt(req.params.idQ) };
         dbo.collection("quiz").findOne(query, function (err, result) {
             if (err) throw err;
-            res.send(result);
+            if(result) res.send(result);
+            else res.send({title : null});
             db.close();
         });
     });
