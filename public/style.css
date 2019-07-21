@@ -90,7 +90,7 @@ ul {
       margin-bottom: 10px;
   }
 
-.button {
+.button, input[type=submit], input[type=button] {
     display: inline-block;
     font-size: 16px;
     margin: 4px;
@@ -103,7 +103,7 @@ ul {
     cursor: pointer;
     text-decoration: none;
   }
-  .button:hover {
+  .button:hover, input[type=submit]:hover, input[type=button]:hover {
     background-color: #4773d3;
     color: white;
   }
@@ -151,6 +151,22 @@ ul {
     width: 100%;
     margin-top: 30px;
   }
+
+#questions{
+    background-color: rgb(223, 223, 223);
+    padding: 10px;
+  }
+
+
+input[type=text]
+{
+  font-size: 16px;
+  margin: 4px;
+  background-color: white; 
+  border: 3px solid #3662c2;
+  padding: 10px 20px;
+  text-align: center;
+}
 
 @media (max-width: 550px) {
     li{

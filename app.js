@@ -17,6 +17,10 @@ app.get('/quiz/:id', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/quiz.html'));
 });
 
+app.get('/add', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/add.html'));
+});
+
 app.get('/json/:idQ', (req, res) => {
     MongoClient.connect(url, (err, db) => {
         if (err) throw err;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
+    <title>Quiz</title>
+</head>
+<body>
+    <header>
+        <div id="logo"><a href="/">Quizzes</a></div>
+        <nav>
+            <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/add">Add quiz</a></li>
+                    <li><a href="/">Contact</a></li>
+                    <li><a href="/">More</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="content" style="min-height: 600px">
+            <h2>Add new quiz</h2>
+            <br>
+            <form>
+                Title:<br>
+                <input type="text" id="title">
+                <br>
+                Description:<br>
+                <input type="text" style="min-width: 40%" id="description">
+                <br>
+                You can use your own numbering (eg A. B. C. D.), but this is not necessary
+                <br>
+                <div id="questions">
+                </div>
+                <br>
+                <input id="questionmark" type="button" onclick="acceptQuestion()" value="Accept question as complete">
+                <br>            
+                <input id="questionmark" type="button" onclick="addQuestion()" value="Add next question">
+                <br>
+                <input type="button" onclick="send()" value="Add Quiz">
+              </form>
+    </section>
+    <div style="clear: both"></div>
+    <footer class="footer">2019</footer>
+</body>
+<script src="/add.js"></script>
+<script>
+init();
+</script>
+</html>
