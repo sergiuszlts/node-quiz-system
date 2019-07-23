@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+const Validator = require('./Validator');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
@@ -48,7 +49,14 @@ app.get('/load-json-all', function (req, res) {
 });
 
 app.post('/addQuiz', function (req, res) {
-    console.log(req.body);
+    let validator = new Validator(req.body);
+    validator.start();
+    if (validator.correct) {
+        console.log(req.body);
+    }
+    else {
+        console.log(validator.err);
+    }
 });
 
 app.listen(port, () => console.log(`Listening on ${port}`));
