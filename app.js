@@ -28,8 +28,8 @@ app.get('/json/:idQ', (req, res) => {
         var query = { "id": parseInt(req.params.idQ) };
         dbo.collection("quiz").findOne(query, function (err, result) {
             if (err) throw err;
-            if(result) res.send(result);
-            else res.send({title : null});
+            if (result) res.send(result);
+            else res.send({ title: null });
             db.close();
         });
     });
@@ -45,6 +45,10 @@ app.get('/load-json-all', function (req, res) {
             db.close();
         });
     });
+});
+
+app.post('/addQuiz', function (req, res) {
+    console.log(req.body);
 });
 
 app.listen(port, () => console.log(`Listening on ${port}`));

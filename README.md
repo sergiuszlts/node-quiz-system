@@ -2,12 +2,6 @@ Quiz system
 ========
 This is a simple system for creating and solving quizzes.
 -----------
-TODO:
-- [x] Create frontend design
-- [x] Create system in JavaScript
-- [ ] Integrate with node.js
-- [ ] Integrate with MongoDB
-------------
 Database structure:
 * **_id** - standard id (unused in the project)
 * **title** - title of the quiz

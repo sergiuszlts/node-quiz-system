@@ -82,3 +82,21 @@ function acceptQuestion() {
 
     }
 }
+
+
+function send() {
+    if (document.getElementById("title").value == "") alert("The title of your quiz can not be empty");
+    else if (document.getElementById("description").value == "") alert("The description of the quiz can not be empty");
+    else if (quiz.questions.length == 0) alert("The quiz must contain at least one question");
+    else {
+        quiz.title = document.getElementById("title").value;
+        quiz.description = document.getElementById("description").value;
+        let req = new XMLHttpRequest();
+        let url = "/addQuiz"; //address (where the data should be sent)
+        req.open("POST", url, true); //async
+        req.setRequestHeader("Content-Type", "application/json");
+        let data = JSON.stringify(quiz);
+        req.send(data);
+        window.location.href = "/"; //redirect
+    }
+}
