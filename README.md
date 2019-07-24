@@ -13,3 +13,6 @@ Structure of **questions** array:
 * **text** - the content of the question
 * **answers** - array of possible answers (array of strings)
 * **correctAnswer** - number of correct answer
+
+Additional collection **counters** which contains the next free id. Used record: 
+`{ "_id" : "quizid", "sequence_value" : 0 }`

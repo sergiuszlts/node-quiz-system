@@ -4,6 +4,7 @@ const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 const Validator = require('./Validator');
+const NextValue = require("./NextValue.js"); //next free id for sequence
 
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
@@ -52,7 +53,18 @@ app.post('/addQuiz', function (req, res) {
     let validator = new Validator(req.body);
     validator.start();
     if (validator.correct) {
-        console.log(req.body);
+        NextValue("quizid", (returnedId) => {
+            req.body.id = returnedId; //set id from counters collection
+            MongoClient.connect(url, function (err, db) {
+                if (err) throw err;
+                let dbo = db.db("mydb");
+                dbo.collection("quiz").insertOne(req.body, function (err) {
+                    if (err) throw err;
+                    console.log("1 document inserted");
+                    db.close();
+                });
+            });
+        });
     }
     else {
         console.log(validator.err);
